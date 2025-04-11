@@ -8,4 +8,8 @@
 
 *   **Issue:** Deprecated Husky pre-commit script header.
     *   **Context:** Warning message during `git commit` in Sprint 1 after setting up Husky manually.
-    *   **Action:** Update `.husky/pre-commit` script to remove the deprecated `#!/usr/bin/env sh` and `. "$(dirname -- "$0")/_/husky.sh"` lines as advised by Husky v10 guidelines (once stable/relevant). 
+    *   **Action:** RESOLVED in Sprint 3 prep by removing deprecated lines from `.husky/pre-commit`.
+
+*   **Issue:** Simplified date validation in Travel Itinerary form.
+    *   **Context:** Changed Zod schema for `arrival_date` and `departure_date` from preprocessed `z.date()` to `z.string()` during Sprint 3 to avoid RHF/Zod type conflicts with `<input type="date">`.
+    *   **Action:** Revisit date handling. Implement robust parsing/validation (potentially using `<Controller>` or a different date picker component) to ensure dates are handled as `Date` objects in the form state/submission if required by backend later. 
