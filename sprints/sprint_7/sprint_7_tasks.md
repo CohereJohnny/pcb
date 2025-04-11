@@ -56,15 +56,15 @@
     *   [ ] Add note in `sprint_7_updates.md` acknowledging these manual steps are prerequisites for verification.
 
 **8. Verify CI/CD Pipeline:**
-    *   [ ] Create a new branch (e.g., `test-ci-cd`).
-    *   [ ] Make a minor change in `pcb-app` and commit it.
-    *   [ ] Push the branch to GitHub and create a Pull Request targeting `main`.
-    *   [ ] Verify the "CI Pipeline" GitHub Action runs automatically on the PR and passes (Lint, Build checks).
-    *   [ ] **(Requires User Action from Step 7)** Verify a Vercel preview deployment link appears in the PR checks/comments.
-    *   [ ] Merge the Pull Request into `main`.
-    *   [ ] Verify the "CI Pipeline" GitHub Action runs automatically on the push to `main` and passes.
-    *   [ ] **(Requires User Action from Step 7)** Verify a Vercel production deployment is triggered automatically and completes successfully.
-    *   [ ] Add note in `sprint_7_updates.md` confirming the verification results (Action runs, Vercel previews/deploys).
+    *   [x] Create a new branch (e.g., `test-ci-cd`).
+    *   [x] Make a minor change in `pcb-app` and commit it.
+    *   [x] Push the branch to GitHub and create a Pull Request targeting `main`.
+    *   [x] Verify the "CI Pipeline" GitHub Action runs automatically on the PR and passes (Lint, Build checks).
+    *   [x] **(Requires User Action from Step 7)** Verify a Vercel preview deployment link appears in the PR checks/comments.
+    *   [x] Merge the Pull Request into `main`.
+    *   [x] Verify the "CI Pipeline" GitHub Action runs automatically on the push to `main` and passes.
+    *   [x] **(Requires User Action from Step 7)** Verify a Vercel production deployment is triggered automatically and completes successfully.
+    *   [x] Add note in `sprint_7_updates.md` confirming the verification results (Action runs, Vercel previews/deploys).
 
 **9. Sprint Documentation & Wrap-up:**
     *   [ ] Update Progress: Maintain `sprints/sprint_7/sprint_7_updates.md` throughout.

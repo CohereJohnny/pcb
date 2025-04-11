@@ -14,4 +14,15 @@
     3.  Installed `react-datepicker` and `@types/react-datepicker` as dependencies in the correct `/pcb-app` directory using `pnpm add react-datepicker @types/react-datepicker`.
     4.  Restarted the development server (`pnpm run dev`).
 
+*   **Issue:** Multiple `ENOENT: no such file or directory` errors referencing files within `pcb-app/.next` directory in the console. Website not loading correctly.
+    *   **Context:** Observed after implementing Sprint 6 features. Errors indicate potential build cache corruption.
+    *   **Action:** Removed the `pcb-app/.next` directory (`rm -rf .next`) and instructed user to restart the development server (`pnpm run dev`). This should force Next.js to regenerate the build cache cleanly.
+    *   **Status:** Failed. User still reported 500 Internal Server Error after restarting.
+
+*   **Issue:** 500 Internal Server Error when accessing `/mock-camp-123/roster`.
+    *   **Context:** Occurred after failed attempt to fix `ENOENT` errors by clearing `.next` cache.
+    *   **Root Cause:** Incorrect import of `fontFamily` from `tailwindcss/defaultTheme` in `pcb-app/tailwind.config.js`. Tailwind v4 requires importing the `defaultTheme` object itself.
+    *   **Action:** Corrected the import to `import defaultTheme from "tailwindcss/defaultTheme";` and updated usage to `...defaultTheme.fontFamily.sans` in `pcb-app/tailwind.config.js`. Instructed user to restart dev server.
+    *   **Status:** RESOLVED. User confirmed fix resolved the 500 error after server restart.
+
 ---
