@@ -1,0 +1,31 @@
+# Cursor Rule: Sprint Workflow
+
+**Description:** This rule outlines the standardized process for managing sprints within the `sprints/` directory.
+
+**Workflow:**
+
+1.  **Sprint Initialization (Start of Sprint X):**
+    *   Create a new directory: `sprints/sprint_x` (replace `x` with the current sprint number).
+    *   Inside `sprints/sprint_x`, create three empty files:
+        *   `sprint_x_tasks.md`: For the detailed task breakdown.
+        *   `sprint_x_updates.md`: For ongoing notes, context, and progress updates during the sprint.
+        *   `sprint_x_report.md`: For the final sprint summary (populated at the end).
+
+2.  **Sprint Planning:**
+    *   Review the master plan in `sprints/sprintplan.md` to understand the goals and high-level tasks for Sprint X.
+    *   Create a detailed, logical breakdown of all tasks required to meet the sprint goals.
+    *   Populate `sprints/sprint_x/sprint_x_tasks.md` with this detailed task list (e.g., using checkboxes `[ ] Task description`).
+
+3.  **Sprint Execution:**
+    *   Work through the tasks listed in `sprints/sprint_x/sprint_x_tasks.md`.
+    *   As work progresses, add notes, observations, relevant code snippets, commands run, or any contextual information to `sprints/sprint_x/sprint_x_updates.md`.
+    *   Mark tasks as complete in `sprints/sprint_x/sprint_x_tasks.md` by checking the boxes (e.g., `[x] Completed task`).
+    *   **CRITICAL:** Do **NOT** modify the task descriptions or add/remove tasks in `sprint_x_tasks.md` after the planning phase is complete. Stick to the plan.
+
+4.  **Handling Deviations:**
+    *   If non-critical technical issues or necessary refactors are identified that deviate from the planned tasks, add them to `sprints/tech_debt.md` instead of addressing them immediately.
+    *   If new feature ideas, non-critical enhancements, or "nice-to-haves" arise, add them to `sprints/backlog.md`.
+    *   Only address critical blockers that prevent the completion of planned tasks. Document the deviation in `sprint_x_updates.md`.
+
+5.  **Sprint Completion (End of Sprint X):**
+    *   Upon user prompt, consolidate the information from `sprint_x_tasks.md` (task status) and `sprint_x_updates.md` (notes, context, outcomes) into a comprehensive summary in `sprints/sprint_x/sprint_x_report.md`. 

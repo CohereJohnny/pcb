@@ -5,13 +5,13 @@
 
 ## Overview
 
-This plan outlines 12 sprints to deliver the Minimum Viable Product (MVP) of the Theme Camp Hub, focusing on a **frontend-first approach**. The initial sprints prioritize building a fully functional UI with mock data and local state management, deployed early to Vercel. Backend integration is deferred post-MVP (v1.0).
+This plan outlines 13 sprints to deliver the Minimum Viable Product (MVP) of the Theme Camp Hub, focusing on a **frontend-first approach**. The initial sprints prioritize building a fully functional UI with mock data and local state management, deployed early to Vercel. Backend integration is deferred post-MVP (v1.0).
 
 **Key Priorities:**
 *   Rapid UI development & iteration based on specs.
 *   Incremental feature implementation.
 *   Early deployment to Vercel (by Sprint 4).
-*   Establish CI/CD pipeline (by Sprint 6).
+*   Establish CI/CD pipeline (by Sprint 7).
 *   Deliver core MVP features (Profile, Roster View, Announcements, Lists/Tasks, Dashboard) with a polished frontend experience.
 *   Browser-based testing throughout.
 
@@ -72,7 +72,20 @@ This plan outlines 12 sprints to deliver the Minimum Viable Product (MVP) of the
     *   Deploy the current application state to Vercel preview/development environment.
     *   Test basic functionality (navigation, Profile editing, Roster view) on the deployed Vercel URL.
 
-**Sprint 5: Announcements UI & Vercel Testing**
+**Sprint 5: Design System Implementation & UI Polish**
+*   **Goal:** Refine the overall look and feel, implement the design language consistently across existing components, aiming for a clean, Notion-like aesthetic while adhering to the updated `design_spec.md`.
+*   **Tasks:**
+    *   Review the updated `design_spec.md` (Notion-inspired: neutral base, accent colors, whitespace, minimal shadows/borders).
+    *   Refine Tailwind configuration (`tailwind.config.js`, `globals.css`) to strongly reflect the updated design spec: heavier use of neutrals (Slate), specific primary/secondary accent usage, typography settings (incl. generous line-height).
+    *   Refactor core layout components (`Header`, `Sidebar`/`MainNav`, `Footer`) for consistency, applying the refined neutral-heavy theme and improved spacing.
+    *   Update existing feature components (Profile, Roster) to fully utilize the defined styles: apply the updated color palette (neutrals + accents), typography, and spacing rules. Ensure components like Cards and Inputs use subtle borders and minimal/no shadows by default.
+    *   Ensure consistent use of Shadcn/ui components, customizing appearance via theme variables or utility classes to precisely match the target aesthetic (clean, minimal).
+    *   Focus on visual hierarchy, clarity, and component states (hover, focus, active, disabled), ensuring states use subtle `muted` backgrounds or minimal visual changes where appropriate.
+    *   Apply responsive design principles rigorously, ensuring a polished, spacious, and readable look on both mobile and desktop for existing features.
+    *   Create/document reusable custom components derived from Shadcn/ui primitives if needed, ensuring they follow the established minimal style (e.g., custom page headers, list item variants).
+    *   Verify color contrast and accessibility basics (focus states, semantic HTML) for all refined UI elements according to the updated spec.
+
+**Sprint 6: Announcements UI & Vercel Testing**
 *   **Goal:** Implement the UI for creating and viewing announcements. Continue testing on Vercel.
 *   **Tasks:**
     *   Define mock announcement data (`Announcement[]`).
@@ -81,10 +94,10 @@ This plan outlines 12 sprints to deliver the Minimum Viable Product (MVP) of the
     *   Display mock announcements on the list page.
     *   Implement the "Create New Announcement" form UI (using RHF/Zod) - saving adds to local mock data state.
     *   Implement the single announcement view page.
-    *   Refine UI/UX based on `design_spec.md` and `ux_flow.md`.
+    *   Refine UI/UX based on `design_spec.md` and `ux_flow.md`. Ensure consistency with Sprint 5 design implementation.
     *   Test announcement features on the Vercel deployment.
 
-**Sprint 6: CI/CD Setup**
+**Sprint 7: CI/CD Setup**
 *   **Goal:** Automate testing, building, and deployment using GitHub Actions and Vercel.
 *   **Tasks:**
     *   Set up Husky and lint-staged to run ESLint/Prettier on pre-commit hooks.
@@ -100,22 +113,22 @@ This plan outlines 12 sprints to deliver the Minimum Viable Product (MVP) of the
     *   Ensure Vercel production deployments trigger automatically on merges to the main branch.
     *   Verify the CI/CD pipeline works correctly.
 
-**Sprint 7: List Management UI (Core & Viewing)**
+**Sprint 8: List Management UI (Core & Viewing)**
 *   **Goal:** Implement UI for viewing lists and creating new lists.
 *   **Tasks:**
     *   Define mock data for different list types (`List[]` - Shopping, Task, etc.).
     *   Define `List` and `ListItem` types in `src/types/dataModel.ts` and constants (`listTypes.ts`).
     *   Create List routes (`app/(camp)/[camp_id]/lists/(list)/page.tsx`, `/new/page.tsx`, `/[list_id]/page.tsx`).
-    *   Implement List UI components (`src/components/features/lists/`): `ListCard` (for overview), `ListForm`.
+    *   Implement List UI components (`src/components/features/lists/`): `ListCard` (for overview), `ListForm`. Apply design system from Sprint 5.
     *   Implement the list overview page displaying cards for mock lists.
     *   Implement the "Create New List" form UI (RHF/Zod) - saving adds to local mock list state.
     *   Implement the basic structure for viewing a single list (`/[list_id]/page.tsx`), showing its title and description.
 
-**Sprint 8: List Management UI (Item Interaction & Tasks)**
+**Sprint 9: List Management UI (Item Interaction & Tasks)**
 *   **Goal:** Enable adding, viewing, editing, and completing items within a list, including task-specific fields.
 *   **Tasks:**
     *   Define mock `ListItem[]` data, including task-specific fields (`assignee_user_id`, `due_date`, `status`).
-    *   Implement list item display components (`src/components/features/lists/ListItem`, `ListItemList`).
+    *   Implement list item display components (`src/components/features/lists/ListItem`, `ListItemList`). Apply design system from Sprint 5.
     *   Enhance the single list view (`/[list_id]/page.tsx`) to display items using `ListItemList`.
     *   Implement UI for adding new items to a list (form within the list view).
     *   Implement UI for editing existing list items.
@@ -124,36 +137,36 @@ This plan outlines 12 sprints to deliver the Minimum Viable Product (MVP) of the
     *   Implement local state updates for all list item CRUD operations.
     *   Create "My Tasks" view/widget (`src/components/features/dashboard/AssignedTasksWidget.tsx`) filtering mock data based on assignee.
 
-**Sprint 9: Dashboard Implementation & Roster Management UI (Mock)**
+**Sprint 10: Dashboard Implementation & Roster Management UI (Mock)**
 *   **Goal:** Build the Dashboard and the UI for (mocked) Roster management actions.
 *   **Tasks:**
     *   Create Dashboard route (`app/(camp)/[camp_id]/dashboard/page.tsx`).
-    *   Implement Dashboard UI components (`src/components/features/dashboard/`): `RecentAnnouncementsWidget`, `AssignedTasksWidget`.
+    *   Implement Dashboard UI components (`src/components/features/dashboard/`): `RecentAnnouncementsWidget`, `AssignedTasksWidget`. Apply design system from Sprint 5.
     *   Integrate widgets onto the Dashboard page, displaying relevant mock data.
-    *   Implement UI for Roster management actions (Invite button on Roster page, Edit Role/Remove actions - potentially on a `/[membership_id]/page.tsx` or modal).
+    *   Implement UI for Roster management actions (Invite button on Roster page, Edit Role/Remove actions - potentially on a `/[membership_id]/page.tsx` or modal). Apply design system.
     *   Connect UI actions to placeholder functions (e.g., `console.log('Invite sent')`) - no actual logic.
 
-**Sprint 10: AI Feature UI & Settings UI (Mock)**
+**Sprint 11: AI Feature UI & Settings UI (Mock)**
 *   **Goal:** Implement the user interface elements for AI features and settings, without backend calls.
 *   **Tasks:**
     *   Create Settings page route (`app/(camp)/[camp_id]/settings/page.tsx`).
-    *   Implement UI for AI configuration (Provider selection dropdown, API key input - **display only, do not store securely**).
-    *   Add UI elements to relevant forms (e.g., "Draft with AI" button in `AnnouncementForm`, "Suggest Items" in `ListForm`).
+    *   Implement UI for AI configuration (Provider selection dropdown, API key input - **display only, do not store securely**). Apply design system.
+    *   Add UI elements to relevant forms (e.g., "Draft with AI" button in `AnnouncementForm`, "Suggest Items" in `ListForm`). Apply design system.
     *   Connect UI elements to placeholder functions (e.g., `console.log('AI draft requested')`).
-    *   Ensure UI matches `design_spec.md`.
+    *   Ensure UI matches `design_spec.md` and the refined design system from Sprint 5.
 
-**Sprint 11: Frontend Polish, Testing & Refinement**
+**Sprint 12: Frontend Polish, Testing & Refinement**
 *   **Goal:** Perform thorough testing, refine UI/UX consistency, improve responsiveness, and clean up code.
 *   **Tasks:**
     *   Conduct comprehensive browser testing (Chrome, Firefox, Safari) on desktop and mobile viewports.
-    *   Ensure adherence to `design_spec.md` across all components and pages (colors, typography, spacing).
+    *   Ensure adherence to the refined design system (`design_spec.md` + Sprint 5) across all components and pages.
     *   Test all user flows defined in `ux_flow.md` using mock data.
     *   Add subtle loading/feedback states for local actions (e.g., disabling buttons on submit).
     *   Refactor components for clarity and reusability where needed.
     *   Review and address any outstanding UI bugs or inconsistencies.
     *   Ensure accessibility basics (keyboard navigation, focus states).
 
-**Sprint 12: Documentation, Final Prep & v1.0 Release**
+**Sprint 13: Documentation, Final Prep & v1.0 Release**
 *   **Goal:** Finalize documentation, perform final checks, and prepare for v1.0 (frontend-only MVP) release.
 *   **Tasks:**
     *   Update `README.md` with detailed setup, development, and deployment instructions (including Vercel).
@@ -176,7 +189,7 @@ This plan outlines 12 sprints to deliver the Minimum Viable Product (MVP) of the
 
 ## Post-MVP Sprints: Backend Integration (Supabase)
 
-**Sprint 13: Supabase Setup & Initial API Layer**
+**Sprint 14: Supabase Setup & Initial API Layer**
 *   **Goal:** Set up the Supabase project, define database schema, and create the initial API functions for basic data retrieval.
 *   **Tasks:**
     *   Create Supabase project.
@@ -188,7 +201,7 @@ This plan outlines 12 sprints to deliver the Minimum Viable Product (MVP) of the
     *   Test API functions independently (e.g., in server components or simple test scripts).
     *   Configure environment variables for Supabase URL and keys (`.env.local`, Vercel).
 
-**Sprint 14: Data Fetching Integration**
+**Sprint 15: Data Fetching Integration**
 *   **Goal:** Replace mock data fetching with live data from Supabase for read operations.
 *   **Tasks:**
     *   Refactor pages/components (Profile, Roster, Announcements, Lists, Dashboard) to fetch data using the new API layer functions (likely in Server Components where possible).
@@ -198,7 +211,7 @@ This plan outlines 12 sprints to deliver the Minimum Viable Product (MVP) of the
     *   Test read operations thoroughly across the application using live Supabase data.
     *   Refine RLS policies as needed based on testing.
 
-**Sprint 15: Data Mutation Integration**
+**Sprint 16: Data Mutation Integration**
 *   **Goal:** Implement data creation, update, and deletion operations using Supabase.
 *   **Tasks:**
     *   Implement API functions in `src/lib/api/` for mutations (e.g., `updateProfile`, `createAnnouncement`, `addListItem`, `updateListItemStatus`).
@@ -208,7 +221,7 @@ This plan outlines 12 sprints to deliver the Minimum Viable Product (MVP) of the
     *   Test all CRUD operations thoroughly.
     *   Continue refining RLS policies.
 
-**Sprint 16: Supabase Authentication Integration**
+**Sprint 17: Supabase Authentication Integration**
 *   **Goal:** Replace mock authentication with Supabase Auth.
 *   **Tasks:**
     *   Configure Supabase Auth (Email provider, potentially others later).
@@ -222,7 +235,7 @@ This plan outlines 12 sprints to deliver the Minimum Viable Product (MVP) of the
 
 ---
 
-**Further Considerations (Beyond Sprint 16):**
+**Further Considerations (Beyond Sprint 17):**
 *   Implementing actual AI feature logic using backend functions (Supabase Edge Functions).
 *   Secure API key handling for AI features.
 *   More robust testing (Unit, Integration, E2E).

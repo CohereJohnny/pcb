@@ -15,6 +15,7 @@ Our design must balance the practical needs of a logistics and communication too
 
 * **Pragmatic & Efficient:** The primary goal is task completion and information retrieval. The design must prioritize clarity, speed, and intuitive workflows. Minimize cognitive load, especially during stressful pre-playa periods.
 * **Approachable & Encouraging:** Avoid a sterile, corporate feel. The design should feel helpful, supportive, and subtly reflect the creativity of the community it serves without being distracting or cliché. Think "organized creative project," not enterprise software.
+* **Clean & Content-Focused (Notion Inspired):** Drawing inspiration from tools like Notion for their clean, organized, and content-focused interface, we aim for high clarity and usability. Maximize whitespace and minimize visual clutter.
 * **Accessible & Inclusive:** Design for *everyone* in the camp, regardless of technical skill, ability, or device used. Adherence to accessibility standards (WCAG) is non-negotiable.
 * **Consistent & Scalable:** Establish a clear design system using Tailwind and Shadcn/ui primitives that can be applied consistently across the MVP features and extended gracefully for future additions like multitenancy, financials, and social features.
 * **Context-Aware (MVP Focus: Pre-Playa Web/Mobile):** While acknowledging the challenging on-playa environment (dust, sun, connectivity) for future iterations (PWA/Offline), the MVP design primarily targets pre-playa usage on standard web browsers (desktop and mobile).
@@ -27,22 +28,22 @@ This guide forms the basis of the visual identity, leveraging Tailwind CSS utili
 
 ### 3.1. Color Palette
 
-The palette uses a base of accessible neutrals with functional primary and semantic accents. Colors are chosen for good contrast ratios (aiming for WCAG AA minimum 4.5:1 for text/UI elements).
+The palette uses a base of accessible neutrals with functional primary and semantic accents. Colors are chosen for good contrast ratios (aiming for WCAG AA minimum 4.5:1 for text/UI elements). **The core UI should heavily rely on the Neutral palette for a clean, focused look, using Primary/Secondary colors as accents.**
 
-* **Primary (Actions, Key Elements):** Teal
-    * `primary`: `#0D9488` (Tailwind Teal 600) - Buttons, active links, key interactive elements.
+* **Primary (Key Actions, Accents):** Teal // Use Sparingly
+    * `primary`: `#0D9488` (Tailwind Teal 600) - Main call-to-action buttons, active navigation indicators, specific highlights.
     * `primary-foreground`: `#F0FDFA` (Tailwind Teal 50) - Text on primary background.
-* **Secondary (Supporting Elements, Info):** Amber/Orange
-    * `secondary`: `#F59E0B` (Tailwind Amber 500) - Secondary buttons, informational highlights (use judiciously).
+* **Secondary (Supporting Actions, Info Accents):** Amber/Orange // Use Sparingly
+    * `secondary`: `#F59E0B` (Tailwind Amber 500) - Secondary buttons, less critical highlights, informational icons (use judiciously).
     * `secondary-foreground`: `#0C0A09` (Tailwind Stone 950) - Text on secondary background.
-* **Neutrals (Backgrounds, Borders, Text):** Slate (Provides a slightly cooler, modern feel compared to pure gray)
-    * `background`: `#FFFFFF` (White) / `#F8FAFC` (Slate 50) - Main page backgrounds.
+* **Neutrals (Core UI Structure, Backgrounds, Borders, Text):** Slate (Provides a slightly cooler, modern feel compared to pure gray) // **Primary UI Palette**
+    * `background`: `#FFFFFF` (White) / `#F8FAFC` (Slate 50) - Main page backgrounds, card backgrounds.
     * `foreground`: `#0F172A` (Slate 900) - Default body text.
-    * `muted`: `#F1F5F9` (Slate 100) - Subtle backgrounds (e.g., card hover).
-    * `muted-foreground`: `#64748B` (Slate 500) - Secondary/placeholder text.
-    * `border`: `#E2E8F0` (Slate 200) - Default borders.
+    * `muted`: `#F1F5F9` (Slate 100) - Subtle backgrounds (e.g., hover states, table stripes).
+    * `muted-foreground`: `#64748B` (Slate 500) - Secondary/placeholder text, inactive icons/elements.
+    * `border`: `#E2E8F0` (Slate 200) - Default borders for cards, dividers.
     * `input`: `#CBD5E1` (Slate 300) - Input borders.
-    * `card`: `#FFFFFF` (White) - Card backgrounds.
+    * `card`: `#FFFFFF` (White) - Card backgrounds (often same as page background).
     * `card-foreground`: `#0F172A` (Slate 900) - Text within cards.
 * **Semantic Colors:**
     * `destructive`: `#EF4444` (Tailwind Red 500) - Destructive actions (e.g., Delete buttons). Use sparingly.
@@ -67,7 +68,7 @@ Readability is key. Use `next/font` for optimized loading.
     * `Body (Default)`: 16px (text-base), Regular (font-normal), `text-foreground`
     * `Body (Small / Muted)`: 14px (text-sm), Regular, `text-muted-foreground`
     * `Label / Button Text`: 14px (text-sm), Medium
-* **Line Height:** Use Tailwind's relative line heights (`leading-relaxed` or `leading-normal`) for good readability.
+* **Line Height:** Use Tailwind's relative line heights (`leading-relaxed` or `leading-normal`) for good readability. **Ensure generous line-height appropriate for content-heavy sections.**
 * **Defaults:** Set base font size and color in `globals.css` on the `body` or `html` tag.
 
 ### 3.3. Iconography
@@ -84,7 +85,7 @@ Readability is key. Use `next/font` for optimized loading.
 
 ### 3.4. Spacing & Layout
 
-* **Spacing Scale:** Use Tailwind's default 4px based scale consistently (e.g., `p-1`=4px, `p-2`=8px, `p-4`=16px, `p-6`=24px, `p-8`=32px). Apply for padding, margin, gaps.
+* **Spacing Scale:** Use Tailwind's default 4px based scale consistently (e.g., `p-1`=4px, `p-2`=8px, `p-4`=16px, `p-6`=24px, `p-8`=32px). Apply for padding, margin, gaps. **Utilize ample whitespace to reduce clutter and improve focus.**
 * **Layout:**
     * Use a constrained content width (e.g., `max-w-7xl mx-auto`) for main content areas on larger screens to improve readability.
     * Employ responsive grids (CSS Grid, Flexbox via Tailwind utilities) for layout structure.
@@ -104,10 +105,10 @@ Readability is key. Use `next/font` for optimized loading.
 Guide the user's attention effectively:
 
 * **Size & Weight:** Larger, bolder fonts for titles and key headings.
-* **Color:** Use the Primary color for main calls-to-action (buttons, links). Use Semantic colors for feedback (errors, success). Use Muted foreground colors for less important text.
-* **Spacing:** Use whitespace (margins, padding) effectively to group related elements and separate distinct sections. Negative space is crucial.
+* **Color:** Use the Primary color for main calls-to-action (buttons, links). Use Semantic colors for feedback (errors, success). Use Muted foreground colors for less important text. **Rely heavily on the neutral palette for structure and text.**
+* **Spacing:** Use whitespace (margins, padding) effectively to group related elements and separate distinct sections. Negative space is crucial for a clean look.
 * **Placement:** Position critical information (e.g., page titles, primary actions, dashboard summaries) in prominent locations (top, left according to reading patterns).
-* **Borders & Shadows:** Use subtle borders (`border`) to define containers (cards, inputs). Use subtle shadows (`shadow-sm`, `shadow-md`) sparingly for elevation (e.g., dropdowns, dialogs).
+* **Borders & Shadows:** Use subtle borders (`border` - e.g., Slate 200) to define containers (cards, inputs). **Minimize the use of shadows;** use very subtle shadows (`shadow-sm`) only where necessary for indicating elevation (e.g., dropdowns, dialogs, sticky headers).
 
 ---
 
@@ -116,16 +117,16 @@ Guide the user's attention effectively:
 Leverage Shadcn/ui components as building blocks, ensuring they adhere to the style guide. Key interactive elements must have clear visual states:
 
 * **Buttons (`components/ui/button`):**
-    * Variants: `default` (primary color), `secondary`, `destructive`, `outline`, `ghost`, `link`.
-    * States: Default, `hover` (subtle background/opacity change), `focus` (visible focus ring - essential for accessibility, Tailwind defaults + Shadcn), `active` (slight scale/color change), `disabled` (muted colors, `not-allowed` cursor).
+    * Variants: `default` (primary color - for key actions), `secondary` (less prominent actions), `destructive`, `outline` (neutral border), `ghost` (minimal styling, often for tertiary actions or icon buttons), `link`. **Default state for many non-critical actions might be `outline` or `ghost` for a cleaner look.**
+    * States: Default, `hover` (subtle background/opacity change - often using `muted` colors), `focus` (visible focus ring - essential for accessibility, Tailwind defaults + Shadcn), `active` (slight scale/color change), `disabled` (muted colors, `not-allowed` cursor).
 * **Inputs (`components/ui/input`, `textarea`, `select`, `checkbox`, `radio`):**
-    * Clear borders (`border input`).
+    * Clear, subtle borders (`border input` - e.g., Slate 300).
     * Readable placeholder text (`text-muted-foreground`).
-    * Visible `focus` state (focus ring).
+    * Visible `focus` state (focus ring, potentially slightly brighter border).
     * Disabled state (muted appearance).
-    * Validation states (e.g., red border for error, potentially with icon).
-* **Cards (`components/ui/card`):** Standard container for discrete content blocks (announcements, list summaries). Consistent padding, subtle border, optional shadow on hover if interactive.
-* **List Items:** Clear visual distinction between items. Interactive states (hover background) if clickable. Clear indication of status (e.g., checkbox for complete, status badge for tasks).
+    * Validation states (e.g., red border/icon for error, potentially green for success).
+* **Cards (`components/ui/card`):** Standard container for discrete content blocks. Consistent padding, subtle border (`border`), often white or very light gray (`background`) background. **Avoid default shadows; consider subtle border hover states if interactive.**
+* **List Items:** Clear visual distinction between items. Interactive states (subtle `muted` background on hover) if clickable. Clear indication of status (e.g., checkbox for complete, status badge for tasks).
 
 ---
 

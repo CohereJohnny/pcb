@@ -1,0 +1,12 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Rule Name: Project Structure and Working Directory
+
+Description:
+  - The primary Next.js application code resides within the `pcb-app` subdirectory of the workspace root (`/Users/jkb/Projects/pcb/pcb-app`).
+  - **ALWAYS** ensure that package management commands (`pnpm install`, `pnpm add`, `pnpm run`, `npx`, etc.) and file modifications related to the Next.js application (components, pages, styles, configs like `tailwind.config.js`, `tsconfig.json`) target the `pcb-app` directory or its subdirectories. Use `pnpm` for package management.
+  - The project root (`/Users/jkb/Projects/pcb`) contains project-level documentation (`specs/`, `sprints/`), but **NOT** application code, `node_modules`, or application-specific configuration files like `package.json`.
+  - When running terminal commands for the application, explicitly `cd pcb-app` first if the current working directory is the root.
