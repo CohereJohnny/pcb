@@ -33,10 +33,10 @@
         *   Render the table headers and rows based on the provided data and column definitions.
 
 **4. Data Integration & Display:**
-    *   [ ] **Process Mock Data:** In `pcb-app/src/app/(camp)/[camp_id]/roster/(view)/page.tsx`:
+    *   [x] **Process Mock Data:** In `pcb-app/src/app/(camp)/[camp_id]/roster/(view)/page.tsx`:
         *   Import the mock data arrays from `roster.ts`.
         *   Create a function or logic to combine `mockMemberships`, `mockRosterUsers`, and `mockRosterProfiles` into a single array suitable for the `RosterTable` component (e.g., `RosterMember[]`).
-    *   [ ] **Render Table:**
+    *   [x] **Render Table:**
         *   Import the `RosterTable` component into `page.tsx`.
         *   Pass the processed mock roster data to the `RosterTable`.
 

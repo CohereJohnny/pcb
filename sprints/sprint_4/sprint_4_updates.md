@@ -12,3 +12,5 @@
 *   **Task 3.2 (Add Shadcn Table):** Completed. Ran `npx shadcn@latest add table`. Component added to `pcb-app/src/components/ui/table.tsx`.
 *   **Task 3.3 (Create `RosterTable.tsx`):** Completed. Created placeholder file `pcb-app/src/components/features/roster/RosterTable.tsx`.
 *   **Task 3.4 (Implement `RosterTable`):** Completed. Implemented basic table structure, columns, and props using Shadcn Table components. Installed `@tanstack/react-table` dependency.
+*   **Task 4.1 (Process Mock Data):** Completed. Added data processing logic to `pcb-app/src/app/(camp)/[camp_id]/roster/(view)/page.tsx`.
+*   **Task 4.2 (Render Table):** Completed. Imported and rendered `RosterTable` component in the roster page, passing processed data.
