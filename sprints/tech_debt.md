@@ -20,4 +20,4 @@
 
 *   **Issue:** Type errors with `react-datepicker` and `Controller`.
     *   **Context:** Encountered during Sprint 5 UI Polish in `TravelItineraryForm.tsx`. Linter flags issues like JSX component type incompatibility and implicit 'any' types related to DatePicker within RHF's Controller.
-    *   **Action:** Investigate the correct way to integrate `react-datepicker` with `react-hook-form` and Zod using `Controller` to ensure proper type safety and eliminate the `as any` cast on the resolver. This might involve updating types, component props, or how the `onChange` handler is used. 
+    *   **Action:** RESOLVED in Sprint 13 Prep. Removed the `as unknown as Resolver` type assertion in `TravelItineraryForm.tsx`. Explicitly typed the `arrival_date` and `departure_date` fields in the `TravelItineraryFormData` type definition (`profileSchema.ts`) using `Omit` and intersection (`&`) to match the expected `Date | null | undefined` type after Zod preprocessing, resolving the type mismatch between `zodResolver` and `useForm`. 
