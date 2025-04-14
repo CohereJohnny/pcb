@@ -58,4 +58,16 @@
     *   **Action (Attempt 3):** Refactored to select individual raw state arrays (`state.lists`, `state.listItems`) in separate `useListStore` calls, keeping `useMemo` for derived data.
     *   **Status:** RESOLVED. User confirmed selecting individual state pieces resolved the warning.
 
+## Sprint 12 (During Polish/Refinement)
+
+*   **Issue:** Next.js console error `A param property was accessed directly...` in `ProfilePage` (`/[camp_id]/profile/page.tsx`).
+*   **Cause:** The page was marked `'use client;'` but was still trying to access `params` via props instead of using the correct client-side hooks (`useParams`, `useSearchParams`).
+*   **Fix:** Refactored `ProfilePage` to remove `params` and `searchParams` from props and use the `useParams` and `useSearchParams` hooks from `next/navigation` instead.
+*   **File Modified:** `pcb-app/src/app/(camp)/[camp_id]/profile/page.tsx`
+
+*   **Issue:** React error `MenuItem must be used within Menu` originating from `RosterTable.tsx` actions column.
+*   **Cause:** Previous refactoring/cleanup incorrectly removed the necessary parent `DropdownMenu` structure, leaving `DropdownMenuItem` components rendered directly in the table cell.
+*   **Fix:** Re-wrapped the action items (`Edit Role`, `Remove Member`) within a complete `<DropdownMenu><DropdownMenuTrigger><DropdownMenuContent>...</DropdownMenuContent></DropdownMenu>` structure using a `MoreHorizontal` icon button as the trigger. Removed now-unused handler functions (`handleEditRole`, `handleRemoveMember`).
+*   **File Modified:** `pcb-app/src/components/features/roster/RosterTable.tsx`
+
 ---

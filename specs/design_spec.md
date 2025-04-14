@@ -136,7 +136,7 @@ Accessibility is a core requirement, not an afterthought. Aim for **WCAG 2.1 Lev
 
 * **Color Contrast:** Ensure all text and meaningful UI elements meet minimum contrast ratios (4.5:1 for normal text, 3:1 for large text/UI components). Use contrast checking tools.
 * **Keyboard Navigation:** All interactive elements must be reachable and operable via keyboard alone in a logical order.
-* **Focus Indicators:** Ensure clear, visible focus states for all interactive elements (buttons, links, inputs). Tailwind/Shadcn defaults are generally good starting points.
+* **Focus Indicators:** Ensure clear, visible focus states for all interactive elements (buttons, links, inputs). Tailwind/Shadcn defaults are generally good starting points, **however, direct component styles might override global settings. A more specific global rule using `!important` on `box-shadow` (simulating a ring) might be needed to ensure consistent, high-contrast visibility (e.g., using `--primary` color) across all components.**
 * **Semantic HTML:** Use appropriate HTML5 elements (`<nav>`, `<main>`, `<aside>`, `<button>`, etc.) to provide inherent meaning and structure.
 * **ARIA Attributes:** Use ARIA (Accessible Rich Internet Applications) attributes where necessary to enhance semantics for assistive technologies (though Radix UI primitives used by Shadcn handle much of this).
 * **Forms:** Use `<label>` elements correctly associated with form controls. Provide clear error messages and validation feedback.
