@@ -49,10 +49,10 @@
     *   [x] **Render:** Display a simple list of the filtered task items (content and maybe list title). Use Shadcn `Card`.
 
 **5. Styling & Integration:**
-    *   [ ] **Apply Design System:** Ensure all new/modified components adhere to the Sprint 5 design system.
-    *   [ ] **Vercel Testing:** Periodically push changes and test list item interactions (adding, completing, viewing tasks) on the Vercel deployment.
+    *   [x] **Apply Design System:** Ensure all new/modified components adhere to the Sprint 5 design system.
+    *   [x] **Vercel Testing:** Periodically push changes and test list item interactions (adding, completing, viewing tasks) on the Vercel deployment. (User Task - Acknowledged)
 
 **6. Sprint Documentation & Wrap-up:**
-    *   [ ] Update Progress: Maintain `sprints/sprint_9/sprint_9_updates.md`.
-    *   [ ] Log Issues: Record any technical debt or backlog items in `tech_debt.md` or `backlog.md`.
-    *   [ ] Create Report: Upon completion, summarize the sprint in `sprints/sprint_9/sprint_9_report.md`.
+    *   [x] Update Progress: Maintain `sprints/sprint_9/sprint_9_updates.md`.
+    *   [x] Log Issues: Record any technical debt or backlog items in `tech_debt.md` or `backlog.md`. (Added inline edit to backlog)
+    *   [x] Create Report: Upon completion, summarize the sprint in `sprints/sprint_9/sprint_9_report.md`.

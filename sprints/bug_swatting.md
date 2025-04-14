@@ -50,4 +50,12 @@
     *   **Action:** Applied the `useMemo` pattern: selected the full `state.announcements` array from the store and performed filtering within the component using `React.useMemo`.
     *   **Status:** RESOLVED. User confirmed the `useMemo` approach resolved the warning.
 
+*   **Issue:** React warning: "The result of getServerSnapshot should be cached to avoid an infinite loop" originating from `AssignedTasksWidget`.
+    *   **Context:** Appeared when viewing the Dashboard page.
+    *   **Root Cause:** Uncertain. Filtering/deriving state within the store selector or selecting an object containing multiple state slices seems to trigger the warning in this environment, even with memoization attempts.
+    *   **Action (Attempt 1 - Failed):** Used `React.useCallback` to memoize the selector.
+    *   **Action (Attempt 2 - Failed):** Refactored to select full state and filter/derive using `React.useMemo`.
+    *   **Action (Attempt 3):** Refactored to select individual raw state arrays (`state.lists`, `state.listItems`) in separate `useListStore` calls, keeping `useMemo` for derived data.
+    *   **Status:** RESOLVED. User confirmed selecting individual state pieces resolved the warning.
+
 ---
