@@ -25,4 +25,29 @@
     *   **Action:** Corrected the import to `import defaultTheme from "tailwindcss/defaultTheme";` and updated usage to `...defaultTheme.fontFamily.sans` in `pcb-app/tailwind.config.js`. Instructed user to restart dev server.
     *   **Status:** RESOLVED. User confirmed fix resolved the 500 error after server restart.
 
+*   **Issue:** Linter error "File .../src/lib/validators/lists.ts is not a module." and potentially incorrect file location.
+    *   **Context:** Observed during Sprint 8 ListForm implementation.
+    *   **Root Cause:** The `validators` directory and its contents (`lists.ts`) were incorrectly created/moved to `/src/lib/validators` at the project root instead of `/pcb-app/src/lib/validators`.
+    *   **Action:** Verified the correct directory (`pcb-app/src/lib/validators`) already existed. Removed the incorrect directory structure (`/src/lib/validators`) from the project root using `rm -rf src/lib`.
+    *   **Status:** RESOLVED. Files are now expected to be in the correct location (`pcb-app/src/lib/validators`), which should fix path resolution issues.
+
+*   **Issue:** React warning: "The result of getServerSnapshot should be cached to avoid an infinite loop" originating from `ListsOverviewPage`.
+    *   **Context:** Error appeared in browser console after implementing Sprint 8 list features.
+    *   **Root Cause:** The Zustand selector `(state) => state.lists.filter(...)` creates a new array reference on every render, triggering the warning.
+    *   **Action (Attempt 1 - Failed):** Used `React.useCallback` to memoize the selector. Error persisted.
+    *   **Action (Attempt 2):** Refactored to select the entire `state.lists` array from Zustand and then perform the filtering within the component using `React.useMemo` based on the `allLists` array and `campId`.
+    *   **Status:** RESOLVED. User confirmed the `useMemo` approach resolved the warning.
+
+*   **Issue:** Build Error: "Export listSchema doesn't exist in target module" in `ListForm.tsx`.
+    *   **Context:** Appeared after fixing the misplaced validators directory.
+    *   **Root Cause:** The file `pcb-app/src/lib/validators/lists.ts` was empty, likely due to file move/creation issues during the previous bug fix.
+    *   **Action:** Restored the Zod schema definition (`listSchema`, `ListFormData`) into `pcb-app/src/lib/validators/lists.ts`.
+    *   **Status:** RESOLVED. User confirmed build error is gone.
+
+*   **Issue:** React warning: "The result of getServerSnapshot should be cached to avoid an infinite loop" originating from `AnnouncementsListPage`.
+    *   **Context:** Similar warning as seen previously on `ListsOverviewPage`.
+    *   **Root Cause:** The Zustand selector `(state) => state.announcements.filter(...)` creates a new array reference on every render.
+    *   **Action:** Applied the `useMemo` pattern: selected the full `state.announcements` array from the store and performed filtering within the component using `React.useMemo`.
+    *   **Status:** RESOLVED. User confirmed the `useMemo` approach resolved the warning.
+
 ---
