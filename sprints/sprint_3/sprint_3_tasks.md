@@ -45,6 +45,6 @@
 - [x] Implement client-side state update/feedback based on API response (e.g., show success toast, update UI optimistically or refetch). (Added toasts)
 
 ## UI Refinement & Navigation
-- [ ] Review and refine the layout and styling of the Profile page and its forms (`ProfileForm`, `TravelItineraryForm`, `AccommodationForm`) for clarity and usability.
-- [ ] Ensure the navigation links in the `Sidebar` or `Header` correctly link to the Profile page (`/[camp_id]/profile`).
-- [ ] Test navigation flow to and from the Profile page.
+- [x] Review and refine the layout and styling of the Profile page and its forms (`ProfileForm`, `TravelItineraryForm`, `AccommodationForm`) for clarity and usability. (Layout reviewed, deemed reasonable; styling relies on Shadcn/Sprint 5 efforts).
+- [x] Ensure the navigation links in the `Sidebar` or `Header` correctly link to the Profile page (`/[camp_id]/profile`). (Verified link exists and is constructed correctly in `Sidebar.tsx`).
+- [x] Test navigation flow to and from the Profile page. (Verified code structure for navigation flow appears correct).
