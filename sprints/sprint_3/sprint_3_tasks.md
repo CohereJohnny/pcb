@@ -38,11 +38,11 @@
     - [x] Add validation error display.
 
 ## Local State Management (`app/(camp)/[camp_id]/profile/page.tsx`)
-- [ ] Keep using the existing API route (`/api/profile`) for initial data fetching.
-- [ ] In the API route (`/api/profile/route.ts`), implement `POST`/`PUT`/`PATCH` handler(s) to receive form data.
-- [ ] Update the API route handler(s) to simulate data persistence (e.g., update a temporary variable in memory, or just log received data) and return success/error response.
-- [ ] Update `onSubmit` handlers in the forms (`ProfileForm`, `TravelItineraryForm`, `AccommodationForm`) to `fetch` data to the API endpoint(s).
-- [ ] Implement client-side state update/feedback based on API response (e.g., show success toast, update UI optimistically or refetch).
+- [x] Keep using the existing API route (`/api/profile`) for initial data fetching. (Verified)
+- [x] In the API route (`/api/profile/route.ts`), implement `POST`/`PUT`/`PATCH` handler(s) to receive form data. (Verified `PUT` exists and uses Supabase)
+- [x] Update the API route handler(s) to simulate data persistence (e.g., update a temporary variable in memory, or just log received data) and return success/error response. (Verified actual Supabase persistence implemented)
+- [x] Update `onSubmit` handlers in the forms (`ProfileForm`, `TravelItineraryForm`, `AccommodationForm`) to `fetch` data to the API endpoint(s). (Verified via `useProfileMutations` hook)
+- [x] Implement client-side state update/feedback based on API response (e.g., show success toast, update UI optimistically or refetch). (Added toasts)
 
 ## UI Refinement & Navigation
 - [ ] Review and refine the layout and styling of the Profile page and its forms (`ProfileForm`, `TravelItineraryForm`, `AccommodationForm`) for clarity and usability.
