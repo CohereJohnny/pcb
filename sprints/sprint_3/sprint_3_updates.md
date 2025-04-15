@@ -16,3 +16,5 @@
 *   Reviewed `Sidebar.tsx` - confirmed correct link construction for Profile page.
 *   Navigation flow appears correct based on code review.
 *   Marked UI Refinement & Navigation tasks as complete in `sprint_3_tasks.md`.
+
+*   **Blocker Resolution:** Added temporary development auth bypass in `/api/profile` route (GET & PUT) using `process.env.NODE_ENV === 'development'` to allow testing profile page without login. Uses mock user ID `'mock-dev-user'` locally.
