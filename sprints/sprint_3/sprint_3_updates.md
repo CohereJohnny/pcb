@@ -20,3 +20,6 @@
 *   **Blocker Resolution:** Added temporary development auth bypass in `/api/profile` route (GET & PUT) using `process.env.NODE_ENV === 'development'` to allow testing profile page without login. Uses mock user ID `'mock-dev-user'` locally. (Encountered issues with UUID format and RLS).
 *   **PIVOT:** Decided to implement actual Supabase authentication instead of continuing with complex workarounds. Removed temporary auth bypass logic.
 *   Created placeholder structure for Login page (`src/app/(auth)/login/page.tsx`).
+
+*   **Troubleshooting:** Encountered persistent type errors (`Promise<ReadonlyRequestCookies>`) when using `cookies()` with `createServerClient` in `ProfilePage.tsx`. Reverted to fetching API route, but server-side fetch failed auth due to cookie forwarding issues.
+*   **Resolution:** Identified that running the dev server *without* `--turbopack` resolved the type inference issue. Reverted `ProfilePage.tsx` to use the direct `createServerClient` pattern, which now works correctly without Turbopack.
