@@ -10,7 +10,7 @@ alwaysApply: false
 **Workflow:**
 
 1.  **Sprint Initialization (Start of Sprint X):**
-    *   Create a new directory: `sprints/sprint_x` (replace `x` with the current sprint number).
+    *   Create a new directory: `sprints/sprint_x` under the project root (replace `x` with the current sprint number).
     *   Inside `sprints/sprint_x`, create three empty files:
         *   `sprint_x_tasks.md`: For the detailed task breakdown.
         *   `sprint_x_updates.md`: For ongoing notes, context, and progress updates during the sprint.
@@ -23,6 +23,7 @@ alwaysApply: false
 
 3.  **Sprint Execution:**
     *   Work through the tasks listed in `sprints/sprint_x/sprint_x_tasks.md`.
+    *   Make changes to the application in `pcb-app` folder and commit changes to the appropriate branch.
     *   As work progresses, add notes, observations, relevant code snippets, commands run, or any contextual information to `sprints/sprint_x/sprint_x_updates.md`.
     *   Mark tasks as complete in `sprints/sprint_x/sprint_x_tasks.md` by checking the boxes (e.g., `[x] Completed task`).
     *   **CRITICAL:** Do **NOT** modify the task descriptions or add/remove tasks in `sprint_x_tasks.md` after the planning phase is complete. Stick to the plan.
@@ -34,6 +35,10 @@ alwaysApply: false
 
 5.  **Sprint Completion (End of Sprint X):**
     *   Upon user prompt, consolidate the information from `sprint_x_tasks.md` (task status) and `sprint_x_updates.md` (notes, context, outcomes) into a comprehensive summary in `sprints/sprint_x/sprint_x_report.md`.
+    *   Create a `sprint_x_testplan.md` with instructions for end users to test the features implemented in the sprint.
+    *   Commit all `sprint` documentation unders under the project root to the `main` branch.
+    *   Make all changes and commit all changes for `sprint_x` to the `sprint_x` branch under the `/pcb-app` folder.
+    *   Create a pull request for `sprint_x` and then once all builds from `pnpm run build` pass, we can merge the pull request and delete the `sprint_x` branch both locally and on the remote.
 
 6. **Bug Swatting**
     *  If we find a bug in the UI or in the console, we can take a momentary pause from `sprint_x_tasks.md` to fix the bugs and update `sprints/bug_swatting.md`.
